@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search with Proxy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #proxyLink {
+            width: 80%;
+            max-width: 400px;
+        }
+        #searchLink {
+            width: 80%;
+            max-width: 400px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Search with Proxy</h2>
+<p>Enter the search term and use the proxy to browse.</p>
+
+<label for="searchLink">Enter URL or search query:</label><br>
+<input type="text" id="searchLink" placeholder="Type URL or search query"><br><br>
+
+<button onclick="useProxy()">Search with Proxy</button>
+
+<script>
+function useProxy() {
+    const searchLink = document.getElementById("searchLink").value;
+
+    // Check if the search field is filled
+    if (!searchLink) {
+        alert("Please enter a URL or search query.");
+        return;
+    }
+
+    // The base URL of the proxy
+    const proxyLink = "https://echo-point.vercel.app/";
+
+    // Construct the full proxy URL by appending the search link as the 'url' parameter
+    const proxySearchUrl = `${proxyLink}?url=${encodeURIComponent(searchLink)}`;
+
+    // Open the proxy URL in a new tab
+    window.open(proxySearchUrl, "_blank");
+}
+</script>
+
+</body>
+</html>
